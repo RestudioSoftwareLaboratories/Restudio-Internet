@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restudio Internet</title>
+  
+
+  <!-- Import Tiny5 font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+
+  <!-- Material Icons from Google -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    /* ---------- Reset ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Remove outline from all elements */
+    *:focus,
+    *:focus-visible {
+      outline: none !important;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url('https://picsum.photos/1920/1080?random=1');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+    }
+
+    .top-bar,
+    .nav-links,
+    .search-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------- Top Bar ---------- */
+    .top-bar {
+      background-color: #000;
+      color: #fff;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .top-bar img {
+      height: 40px;
+      width: auto;
+      margin-right: 12px;
+    }
+
+    .top-bar-title {
+      font-family: "Tiny5", system-ui, sans-serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ---------- Navigation Links ---------- */
+    .nav-links {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+    }
+
+    .nav-links a .material-icons {
+      font-size: 20px;
+    }
+
+    /* ---------- Search Bar ---------- */
+    .search-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .search-container {
+      width: 100%;
+      max-width: 720px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .search-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-logo .logo-box {
+      width: 80px;
+      height: 80px;
+      background: #00A2E8;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-logo .logo-box svg {
+      width: 48px;
+      height: 48px;
+      fill: white;
+    }
+
+    .search-form {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 60px;
+      padding: 0.2rem 1rem 0.2rem 1.5rem;
+    }
+
+    .search-form input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1.05rem;
+      padding: 0.9rem 0.2rem;
+      background: transparent;
+      color: #0f172a;
+      min-width: 0;
+    }
+
+    .search-form input::placeholder {
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .search-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .search-actions .material-icons {
+      font-size: 28px;
+      color: #5f6368;
+      cursor: pointer;
+      padding: 6px;
+      border-radius: 50%;
+      transition: background 0.15s;
+      user-select: none;
+    }
+
+    .search-actions .material-icons:hover {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .search-actions .material-icons.search-icon-btn {
+      color: #00A2E8;
+    }
+
+    .search-actions .material-icons.search-icon-btn:hover {
+      background: rgba(0, 162, 232, 0.1);
+    }
+
+    .quick-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      justify-content: center;
+    }
+
+    .quick-options a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .quick-options a:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .footer-note {
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+    }
+
+    .footer-note a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 600px) {
+      .nav-links {
+        padding: 0.4rem 1rem;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-links a {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+      }
+
+      .nav-links a .material-icons {
+        font-size: 18px;
+      }
+
+      .search-form {
+        padding: 0.2rem 0.8rem 0.2rem 1rem;
+      }
+
+      .search-form input {
+        font-size: 0.95rem;
+        padding: 0.7rem 0.2rem;
+      }
+
+      .search-actions .material-icons {
+        font-size: 24px;
+        padding: 4px;
+      }
+
+      .top-bar-title {
+        font-size: 22px;
+      }
+
+      .top-bar img {
+        height: 32px;
+      }
+
+      .search-logo .logo-box {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+      }
+
+      .search-logo .logo-box svg {
+        width: 38px;
+        height: 38px;
+      }
+
+      .quick-options a {
+        font-size: 0.78rem;
+        padding: 0.3rem 0.8rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .top-bar-title {
+        font-size: 18px;
+      }
+      .top-bar img {
+        height: 28px;
+      }
+
+      .nav-links {
+        gap: 0.5rem;
+        padding: 0.3rem 0.6rem;
+      }
+
+      .nav-links a {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+      }
+
+      .nav-links a .material-icons {
+        font-size: 16px;
+      }
+
+      .search-form {
+        flex-wrap: wrap;
+        background: transparent;
+        border: none;
+        padding: 0;
+        gap: 0.6rem;
+      }
+
+      .search-form input {
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 60px;
+        padding: 0.8rem 1.2rem;
+        width: 100%;
+      }
+
+      .search-actions {
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .search-actions .material-icons {
+        font-size: 32px;
+        padding: 6px;
+      }
+
+      .search-logo .logo-box {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+      }
+
+      .search-logo .logo-box svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== Top Bar ====== -->
+  <div class="top-bar">
+    <img src="https://i.postimg.cc/LXvCQ5rt/swrh-restudio.png" alt="Logo">
+    <span class="top-bar-title">Internet</span>
+  </div>
+
+  <!-- ====== Navigation Links ====== -->
+  <div class="nav-links">
+    <a href="https://restudiosoftwarelaboratories.github.io/Restudio-Maps/" target="_blank">
+      <span class="material-icons">map</span> Maps
+    </a>
+    <a href="https://restudiosoftwarelaboratories.github.io/Restudio-Trends/" target="_blank">
+      <span class="material-icons">trending_up</span> Trends
+    </a>
+    <a href="https://restudiosoftwarelaboratories.github.io/Restudio-Translate/" target="_blank">
+      <span class="material-icons">translate</span> Translate
+    </a>
+  </div>
+
+  <!-- ====== Search Bar ====== -->
+  <div class="search-wrapper">
+    <div class="search-container">
+      
+      <!-- Logo -->
+      <div class="search-logo">
+        <div class="logo-box">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="9" y="1" width="1" height="1"/>
+            <polygon points="9 2 9 3 8 3 8 5 7 5 7 8 2 8 2 7 3 7 3 5 4 5 4 4 5 4 5 3 7 3 7 2 9 2"/>
+            <polygon points="13 2 14 2 14 4 15 4 15 6 16 6 16 8 8 8 8 6 9 6 9 4 10 4 10 2 11 2 11 1 13 1 13 2"/>
+            <rect x="14" y="1" width="1" height="1"/>
+            <polygon points="22 7 22 8 17 8 17 5 16 5 16 3 15 3 15 2 17 2 17 3 19 3 19 4 20 4 20 5 21 5 21 7 22 7"/>
+            <polygon points="17 10 17 14 16 14 16 15 8 15 8 14 7 14 7 10 8 10 8 9 16 9 16 10 17 10"/>
+            <polygon points="1 9 7 9 7 10 6 10 6 14 7 14 7 15 1 15 1 9"/>
+            <polygon points="23 9 23 15 17 15 17 14 18 14 18 10 17 10 17 9 23 9"/>
+            <polygon points="22 16 22 17 21 17 21 19 20 19 20 20 19 20 19 21 17 21 17 22 15 22 15 21 16 21 16 19 17 19 17 16 22 16"/>
+            <rect x="9" y="22" width="1" height="1"/>
+            <polygon points="9 21 9 22 7 22 7 21 5 21 5 20 4 20 4 19 3 19 3 17 2 17 2 16 7 16 7 19 8 19 8 21 9 21"/>
+            <rect x="14" y="22" width="1" height="1"/>
+            <polygon points="14 22 13 22 13 23 11 23 11 22 10 22 10 20 9 20 9 18 8 18 8 16 16 16 16 18 15 18 15 20 14 20 14 22"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Search form -->
+      <form class="search-form" id="searchForm" role="search" target="_blank">
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search DuckDuckGo ..." 
+          autofocus
+          aria-label="Search DuckDuckGo"
+        >
+        <div class="search-actions">
+          <span class="material-icons search-icon-btn" id="searchIcon" title="Search">search</span>
+        </div>
+      </form>
+
+      <!-- Quick shortcuts -->
+      <div class="quick-options">
+        <a data-query="latest news">📰 News</a>
+        <a data-query="healthy recipes">🍳 Recipes</a>
+        <a data-query="AI technology">🤖 AI</a>
+        <a data-query="learn programming">💻 Programming</a>
+      </div>
+
+      <div class="footer-note">
+        🔎 Powered by 
+        <a href="https://duckduckgo.com" target="_blank" rel="noopener">DuckDuckGo</a> 
+        · No tracking · 🦆
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      const searchForm = document.getElementById('searchForm');
+      const searchInput = document.getElementById('searchInput');
+      const searchIcon = document.getElementById('searchIcon');
+      const quickLinks = document.querySelectorAll('.quick-options a[data-query]');
+
+      function goToSearch(query) {
+        const trimmed = query.trim();
+        if (trimmed === '') {
+          window.open('https://duckduckgo.com', '_blank');
+          return;
+        }
+
+        const encodedQuery = encodeURIComponent(trimmed);
+        const ddgUrl = `https://duckduckgo.com/?q=${encodedQuery}&t=h_&ia=web`;
+        window.open(ddgUrl, '_blank');
+      }
+
+      function performSearch() {
+        const query = searchInput.value;
+        goToSearch(query);
+      }
+
+      // Event listeners
+      searchIcon.addEventListener('click', function(event) {
+        event.preventDefault();
+        performSearch();
+      });
+
+      searchInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          performSearch();
+        }
+      });
+
+      quickLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const query = this.getAttribute('data-query');
+          if (query) {
+            searchInput.value = query;
+            goToSearch(query);
+          }
+        });
+      });
+
+      console.log('Welcome to Restudio Internet');
+    })();
+  </script>
+
+</body>
+</html>
