@@ -1,63 +1,91 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Restudio Internet</title>
-  
 
-  <!-- Import Tiny5 font from Google Fonts -->
+  <!-- ============================================================= -->
+  <!-- 🔒 CONTENT SECURITY POLICY                                     -->
+  <!-- ============================================================= -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'none';
+    script-src 'nonce-r4studi0-s3cur3-2026';
+    style-src 'nonce-r4studi0-s3cur3-2026' https://cdn.jsdelivr.net https://fonts.googleapis.com;
+    font-src https://fonts.gstatic.com https://cdn.jsdelivr.net;
+    img-src 'self' data: https://i.postimg.cc https://picsum.photos https://fastly.picsum.photos;
+    connect-src 'none';
+    object-src 'none';
+    base-uri 'none';
+    form-action 'none';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
+  ">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <title>Restudio Internet</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/h45nNLMq/restudio-profile.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://i.postimg.cc/h45nNLMq/restudio-profile.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://i.postimg.cc/h45nNLMq/restudio-profile.png">
+
+  <!-- External Resources (whitelisted in CSP) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 
-  <!-- Material Icons from Google -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-  <style>
+  <!-- ============================================================= -->
+  <!-- 🎨 SECTION 1 — DESIGN / STYLE                                  -->
+  <!-- ============================================================= -->
+  <style nonce="r4studi0-s3cur3-2026">
     /* ---------- Reset ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    /* Remove outline from all elements */
-    *:focus,
-    *:focus-visible {
-      outline: none !important;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *:focus, *:focus-visible { outline: none !important; }
 
     body {
       font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      background-image: url('https://picsum.photos/1920/1080?random=1');
+      background-color: #0f172a;
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
+      background-repeat: no-repeat;
       position: relative;
+      transition: background-image 0.6s ease-in-out;
     }
+
+    /* ---------- 🌿 Nature Backgrounds (Picsum IDs) ---------- */
+    body.bg-nature-1  { background-image: url('https://picsum.photos/id/1015/1920/1080'); } /* نهر وجبال */
+    body.bg-nature-2  { background-image: url('https://picsum.photos/id/1016/1920/1080'); } /* وادي */
+    body.bg-nature-3  { background-image: url('https://picsum.photos/id/1018/1920/1080'); } /* جبل وضباب */
+    body.bg-nature-4  { background-image: url('https://picsum.photos/id/1019/1920/1080'); } /* شلال */
+    body.bg-nature-5  { background-image: url('https://picsum.photos/id/1021/1920/1080'); } /* ضباب جبلي */
+    body.bg-nature-6  { background-image: url('https://picsum.photos/id/1022/1920/1080'); } /* شفق قطبي */
+    body.bg-nature-7  { background-image: url('https://picsum.photos/id/1036/1920/1080'); } /* بحيرة جبلية */
+    body.bg-nature-8  { background-image: url('https://picsum.photos/id/1039/1920/1080'); } /* شلال غابة */
+    body.bg-nature-9  { background-image: url('https://picsum.photos/id/1043/1920/1080'); } /* غابة */
+    body.bg-nature-10 { background-image: url('https://picsum.photos/id/1044/1920/1080'); } /* جبال */
+    body.bg-nature-11 { background-image: url('https://picsum.photos/id/1051/1920/1080'); } /* قمم جبلية */
+    body.bg-nature-12 { background-image: url('https://picsum.photos/id/1053/1920/1080'); } /* جبل ثلجي */
+    body.bg-nature-13 { background-image: url('https://picsum.photos/id/1055/1920/1080'); } /* غابة ضباب */
+    body.bg-nature-14 { background-image: url('https://picsum.photos/id/1057/1920/1080'); } /* جبال */
+    body.bg-nature-15 { background-image: url('https://picsum.photos/id/1069/1920/1080'); } /* قمم */
 
     body::before {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset: 0;
       background: rgba(0, 0, 0, 0.4);
       z-index: 0;
+      pointer-events: none;
     }
 
-    .top-bar,
-    .nav-links,
-    .search-wrapper {
-      position: relative;
-      z-index: 1;
-    }
+    .top-bar, .nav-links, .search-wrapper { position: relative; z-index: 1; }
 
     /* ---------- Top Bar ---------- */
     .top-bar {
@@ -67,16 +95,13 @@
       display: flex;
       align-items: center;
       padding: 0 20px;
-      box-sizing: border-box;
       flex-shrink: 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 200;
     }
 
-    .top-bar img {
-      height: 40px;
-      width: auto;
-      margin-right: 12px;
-    }
+    .top-bar img.logo-img { height: 40px; width: auto; margin-right: 12px; }
 
     .top-bar-title {
       font-family: "Tiny5", system-ui, sans-serif;
@@ -84,6 +109,107 @@
       letter-spacing: 1px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
+
+    /* ---------- Settings Dropdown ---------- */
+    .top-bar-settings { margin-left: auto; position: relative; }
+
+    .settings-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .settings-btn:hover, .settings-btn.active { background: rgba(255, 255, 255, 0.1); color: #fff; }
+    .settings-btn .ti { font-size: 20px; }
+
+    .settings-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #1e1e1e;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      width: 280px;
+      max-height: 70vh;
+      display: none;
+      flex-direction: column;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      z-index: 300;
+    }
+
+    .settings-dropdown.open { display: flex; }
+
+    .settings-dropdown-header {
+      padding: 0.7rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .settings-dropdown-body { padding: 0.4rem; overflow-y: auto; }
+    .settings-dropdown-body::-webkit-scrollbar { width: 6px; }
+    .settings-dropdown-body::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+    }
+
+    .engine-option {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.55rem 0.7rem;
+      border-radius: 8px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.12s;
+      border: none;
+      background: transparent;
+      width: 100%;
+      text-align: left;
+    }
+
+    .engine-option:hover { background: rgba(255, 255, 255, 0.06); }
+    .engine-option.active { background: rgba(0, 162, 232, 0.15); color: #fff; }
+
+    .engine-option img {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      object-fit: contain;
+      background: white;
+      padding: 2px;
+      flex-shrink: 0;
+    }
+
+    .engine-option .engine-emoji {
+      width: 22px; height: 22px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+
+    .engine-option .check {
+      margin-left: auto;
+      color: #00A2E8;
+      font-size: 18px;
+      opacity: 0;
+    }
+
+    .engine-option.active .check { opacity: 1; }
 
     /* ---------- Navigation Links ---------- */
     .nav-links {
@@ -107,16 +233,11 @@
       display: flex;
       align-items: center;
       gap: 0.4rem;
+      cursor: pointer;
     }
 
-    .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
-    }
-
-    .nav-links a .material-icons {
-      font-size: 20px;
-    }
+    .nav-links a:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+    .nav-links a .ti { font-size: 20px; }
 
     /* ---------- Search Bar ---------- */
     .search-wrapper {
@@ -136,27 +257,16 @@
       gap: 1.2rem;
     }
 
-    .search-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    .search-logo { display: flex; align-items: center; justify-content: center; }
 
     .search-logo .logo-box {
-      width: 80px;
-      height: 80px;
+      width: 80px; height: 80px;
       background: #00A2E8;
       border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    .search-logo .logo-box svg {
-      width: 48px;
-      height: 48px;
-      fill: white;
-    }
+    .search-logo .logo-box svg { width: 48px; height: 48px; fill: white; }
 
     .search-form {
       display: flex;
@@ -179,39 +289,26 @@
       min-width: 0;
     }
 
-    .search-form input::placeholder {
-      color: #94a3b8;
-      font-weight: 400;
-    }
+    .search-form input::placeholder { color: #94a3b8; font-weight: 400; }
 
-    .search-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
+    .search-actions { display: flex; align-items: center; gap: 0.3rem; }
 
-    .search-actions .material-icons {
+    .search-actions .ti {
       font-size: 28px;
       color: #5f6368;
       cursor: pointer;
       padding: 6px;
       border-radius: 50%;
-      transition: background 0.15s;
+      transition: background 0.15s, color 0.15s;
       user-select: none;
+      display: inline-flex; align-items: center; justify-content: center;
     }
 
-    .search-actions .material-icons:hover {
-      background: rgba(0, 0, 0, 0.06);
-    }
+    .search-actions .ti:hover { background: rgba(0, 0, 0, 0.06); }
+    .search-actions .ti.search-icon-btn { color: #00A2E8; }
+    .search-actions .ti.search-icon-btn:hover { background: rgba(0, 162, 232, 0.1); }
 
-    .search-actions .material-icons.search-icon-btn {
-      color: #00A2E8;
-    }
-
-    .search-actions .material-icons.search-icon-btn:hover {
-      background: rgba(0, 162, 232, 0.1);
-    }
-
+    /* ---------- Quick options & footer ---------- */
     .quick-options {
       display: flex;
       flex-wrap: wrap;
@@ -235,9 +332,7 @@
       text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     }
 
-    .quick-options a:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
+    .quick-options a:hover { background: rgba(255, 255, 255, 0.25); }
 
     .footer-note {
       margin-top: 1.5rem;
@@ -246,103 +341,35 @@
       text-align: center;
     }
 
-    .footer-note a {
-      color: #60a5fa;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .footer-note a:hover {
-      text-decoration: underline;
-    }
+    .footer-note a { color: #60a5fa; text-decoration: none; font-weight: 500; }
+    .footer-note a:hover { text-decoration: underline; }
 
     /* ---------- Responsive ---------- */
     @media (max-width: 600px) {
-      .nav-links {
-        padding: 0.4rem 1rem;
-        gap: 0.8rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .nav-links a {
-        font-size: 0.8rem;
-        padding: 0.3rem 0.6rem;
-      }
-
-      .nav-links a .material-icons {
-        font-size: 18px;
-      }
-
-      .search-form {
-        padding: 0.2rem 0.8rem 0.2rem 1rem;
-      }
-
-      .search-form input {
-        font-size: 0.95rem;
-        padding: 0.7rem 0.2rem;
-      }
-
-      .search-actions .material-icons {
-        font-size: 24px;
-        padding: 4px;
-      }
-
-      .top-bar-title {
-        font-size: 22px;
-      }
-
-      .top-bar img {
-        height: 32px;
-      }
-
-      .search-logo .logo-box {
-        width: 64px;
-        height: 64px;
-        border-radius: 16px;
-      }
-
-      .search-logo .logo-box svg {
-        width: 38px;
-        height: 38px;
-      }
-
-      .quick-options a {
-        font-size: 0.78rem;
-        padding: 0.3rem 0.8rem;
-      }
+      .nav-links { padding: 0.4rem 1rem; gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+      .nav-links a { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+      .nav-links a .ti { font-size: 18px; }
+      .search-form { padding: 0.2rem 0.8rem 0.2rem 1rem; }
+      .search-form input { font-size: 0.95rem; padding: 0.7rem 0.2rem; }
+      .search-actions .ti { font-size: 24px; padding: 4px; }
+      .top-bar-title { font-size: 22px; }
+      .top-bar img.logo-img { height: 32px; }
+      .settings-btn span { display: none; }
+      .settings-btn { padding: 0.5rem; }
+      .settings-dropdown { width: 260px; right: -8px; }
+      .search-logo .logo-box { width: 64px; height: 64px; border-radius: 16px; }
+      .search-logo .logo-box svg { width: 38px; height: 38px; }
+      .quick-options a { font-size: 0.78rem; padding: 0.3rem 0.8rem; }
+      body { background-attachment: scroll; }
     }
 
     @media (max-width: 400px) {
-      .top-bar-title {
-        font-size: 18px;
-      }
-      .top-bar img {
-        height: 28px;
-      }
-
-      .nav-links {
-        gap: 0.5rem;
-        padding: 0.3rem 0.6rem;
-      }
-
-      .nav-links a {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.5rem;
-      }
-
-      .nav-links a .material-icons {
-        font-size: 16px;
-      }
-
-      .search-form {
-        flex-wrap: wrap;
-        background: transparent;
-        border: none;
-        padding: 0;
-        gap: 0.6rem;
-      }
-
+      .top-bar-title { font-size: 18px; }
+      .top-bar img.logo-img { height: 28px; }
+      .nav-links { gap: 0.5rem; padding: 0.3rem 0.6rem; }
+      .nav-links a { font-size: 0.7rem; padding: 0.2rem 0.5rem; }
+      .nav-links a .ti { font-size: 16px; }
+      .search-form { flex-wrap: wrap; background: transparent; border: none; padding: 0; gap: 0.6rem; }
       .search-form input {
         background: rgba(255, 255, 255, 0.95);
         border: 2px solid rgba(255, 255, 255, 0.2);
@@ -350,60 +377,116 @@
         padding: 0.8rem 1.2rem;
         width: 100%;
       }
-
-      .search-actions {
-        width: 100%;
-        justify-content: center;
-        gap: 1rem;
-      }
-
-      .search-actions .material-icons {
-        font-size: 32px;
-        padding: 6px;
-      }
-
-      .search-logo .logo-box {
-        width: 56px;
-        height: 56px;
-        border-radius: 14px;
-      }
-
-      .search-logo .logo-box svg {
-        width: 32px;
-        height: 32px;
-      }
+      .search-actions { width: 100%; justify-content: center; gap: 1rem; }
+      .search-actions .ti { font-size: 32px; padding: 6px; }
+      .search-logo .logo-box { width: 56px; height: 56px; border-radius: 14px; }
+      .search-logo .logo-box svg { width: 32px; height: 32px; }
+      .settings-dropdown { width: calc(100vw - 40px); right: -10px; }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- ====== Top Bar ====== -->
-  <div class="top-bar">
-    <img src="https://i.postimg.cc/LXvCQ5rt/swrh-restudio.png" alt="Logo">
+  <!-- ============================================================= -->
+  <!-- 🏗️ SECTION 2 — STRUCTURE / HTML                               -->
+  <!-- ============================================================= -->
+
+  <!-- ===== Top Bar ===== -->
+  <header class="top-bar">
+    <img class="logo-img" src="https://i.postimg.cc/LXvCQ5rt/swrh-restudio.png" alt="Logo">
     <span class="top-bar-title">Internet</span>
-  </div>
 
-  <!-- ====== Navigation Links ====== -->
-  <div class="nav-links">
-    <a href="https://restudiosoftwarelaboratories.github.io/Restudio-Maps/" target="_blank">
-      <span class="material-icons">map</span> Maps
-    </a>
-    <a href="https://restudiosoftwarelaboratories.github.io/Restudio-Trends/" target="_blank">
-      <span class="material-icons">trending_up</span> Trends
-    </a>
-    <a href="https://restudiosoftwarelaboratories.github.io/Restudio-Translate/" target="_blank">
-      <span class="material-icons">translate</span> Translate
-    </a>
-  </div>
+    <div class="top-bar-settings">
+      <button type="button" class="settings-btn" id="settingsBtn" aria-haspopup="true" aria-expanded="false" title="Settings">
+        <i class="ti ti-settings" aria-hidden="true"></i>
+        <span>Settings</span>
+      </button>
 
-  <!-- ====== Search Bar ====== -->
-  <div class="search-wrapper">
+      <!-- Settings Dropdown -->
+      <div class="settings-dropdown" id="settingsDropdown" role="menu" aria-label="Search engine settings">
+        <div class="settings-dropdown-header">Search Engine</div>
+        <div class="settings-dropdown-body" id="engineList">
+          <button type="button" class="engine-option" data-engine="ddg" role="menuitem">
+            <img src="https://i.postimg.cc/rDmy8JKc/duckduckgo.jpg" alt="">
+            <span>DuckDuckGo</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="google" role="menuitem">
+            <img src="https://i.postimg.cc/nXzVHkCf/google.jpg" alt="">
+            <span>Google</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="bing" role="menuitem">
+            <img src="https://i.postimg.cc/yDd6VPkN/bing.jpg" alt="">
+            <span>Bing</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="brave" role="menuitem">
+            <img src="https://i.postimg.cc/LJX4HTn2/brave-browser.jpg" alt="">
+            <span>Brave</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="ecosia" role="menuitem">
+            <img src="https://i.postimg.cc/nXzVHkCx/ecosia.jpg" alt="">
+            <span>Ecosia</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="startpage" role="menuitem">
+            <img src="https://i.postimg.cc/yknY45YK/startpage.jpg" alt="">
+            <span>Startpage</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="qwant" role="menuitem">
+            <img src="https://i.postimg.cc/PPKrscrj/qwant.jpg" alt="">
+            <span>Qwant</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="yandex" role="menuitem">
+            <img src="https://i.postimg.cc/56pNdGN1/yandex-badge.jpg" alt="">
+            <span>Yandex</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="yahoo" role="menuitem">
+            <img src="https://i.postimg.cc/CzJLTtLS/yahoo-badge.jpg" alt="">
+            <span>Yahoo</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="mojeek" role="menuitem">
+            <img src="https://i.postimg.cc/3kRrKBdM/mojeek.jpg" alt="">
+            <span>Mojeek</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="engine-option" data-engine="presearch" role="menuitem">
+            <span class="engine-emoji">🔎</span>
+            <span>Presearch</span>
+            <i class="ti ti-check check" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Nav Links ===== -->
+  <nav class="nav-links">
+    <a href="https://restudiosoftwarelaboratories.github.io/Restudio-Calendar/" target="_blank" rel="noopener noreferrer">
+      <i class="ti ti-calendar" aria-hidden="true"></i> Restudio Calendar
+    </a>
+    <a href="https://restudiosoftwarelaboratories.github.io/Restudio-Translate/" target="_blank" rel="noopener noreferrer">
+      <i class="ti ti-language" aria-hidden="true"></i> Translate
+    </a>
+    <a id="openEngineLink" href="#" target="_blank" rel="noopener noreferrer">
+      <i class="ti ti-external-link" aria-hidden="true"></i> Open the current search engine page
+    </a>
+  </nav>
+
+  <!-- ===== Search Bar ===== -->
+  <main class="search-wrapper">
     <div class="search-container">
-      
-      <!-- Logo -->
+
       <div class="search-logo">
         <div class="logo-box">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect x="9" y="1" width="1" height="1"/>
             <polygon points="9 2 9 3 8 3 8 5 7 5 7 8 2 8 2 7 3 7 3 5 4 5 4 4 5 4 5 3 7 3 7 2 9 2"/>
             <polygon points="13 2 14 2 14 4 15 4 15 6 16 6 16 8 8 8 8 6 9 6 9 4 10 4 10 2 11 2 11 1 13 1 13 2"/>
@@ -421,21 +504,14 @@
         </div>
       </div>
 
-      <!-- Search form -->
       <form class="search-form" id="searchForm" role="search" target="_blank">
-        <input 
-          type="text" 
-          id="searchInput" 
-          placeholder="Search DuckDuckGo ..." 
-          autofocus
-          aria-label="Search DuckDuckGo"
-        >
+        <input type="text" id="searchInput" placeholder="Search DuckDuckGo ..." autofocus
+               aria-label="Search DuckDuckGo" autocomplete="off" spellcheck="false">
         <div class="search-actions">
-          <span class="material-icons search-icon-btn" id="searchIcon" title="Search">search</span>
+          <i class="ti ti-search search-icon-btn" id="searchIcon" title="Search" role="button" tabindex="0"></i>
         </div>
       </form>
 
-      <!-- Quick shortcuts -->
       <div class="quick-options">
         <a data-query="latest news">📰 News</a>
         <a data-query="healthy recipes">🍳 Recipes</a>
@@ -443,65 +519,152 @@
         <a data-query="learn programming">💻 Programming</a>
       </div>
 
-      <div class="footer-note">
-        🔎 Powered by 
-        <a href="https://duckduckgo.com" target="_blank" rel="noopener">DuckDuckGo</a> 
+      <div class="footer-note" id="footerNote">
+        🔎 Powered by
+        <a href="https://duckduckgo.com" target="_blank" rel="noopener noreferrer">DuckDuckGo</a>
         · No tracking · 🦆
       </div>
     </div>
-  </div>
+  </main>
 
-  <script>
+  <!-- ============================================================= -->
+  <!-- ⚡ SECTION 3 — INTERACTION / SCRIPT                            -->
+  <!-- ============================================================= -->
+  <script nonce="r4studi0-s3cur3-2026">
     (function() {
       "use strict";
 
-      const searchForm = document.getElementById('searchForm');
-      const searchInput = document.getElementById('searchInput');
-      const searchIcon = document.getElementById('searchIcon');
-      const quickLinks = document.querySelectorAll('.quick-options a[data-query]');
+      // ---------- 🌿 Random Nature Background ----------
+      (function setNatureBackground() {
+        const TOTAL_NATURE_BGS = 15;
+        const randomIndex = Math.floor(Math.random() * TOTAL_NATURE_BGS) + 1;
+        document.body.classList.add('bg-nature-' + randomIndex);
+      })();
 
-      function goToSearch(query) {
-        const trimmed = query.trim();
-        if (trimmed === '') {
-          window.open('https://duckduckgo.com', '_blank');
-          return;
-        }
+      // ---------- Element references ----------
+      const searchInput      = document.getElementById('searchInput');
+      const searchIcon       = document.getElementById('searchIcon');
+      const quickLinks       = document.querySelectorAll('.quick-options a[data-query]');
+      const settingsBtn      = document.getElementById('settingsBtn');
+      const settingsDropdown = document.getElementById('settingsDropdown');
+      const engineOptions    = document.querySelectorAll('.engine-option');
+      const footerNote       = document.getElementById('footerNote');
+      const openEngineLink   = document.getElementById('openEngineLink');
 
-        const encodedQuery = encodeURIComponent(trimmed);
-        const ddgUrl = `https://duckduckgo.com/?q=${encodedQuery}&t=h_&ia=web`;
-        window.open(ddgUrl, '_blank');
+      // ---------- Engines Registry ----------
+      const engines = {
+        ddg:       { name: 'DuckDuckGo', home: 'https://duckduckgo.com',       url: 'https://duckduckgo.com/?q={query}&t=h_&ia=web',         logo: 'https://i.postimg.cc/rDmy8JKc/duckduckgo.jpg',      emoji: '🦆', noTracking: true  },
+        google:    { name: 'Google',     home: 'https://www.google.com',       url: 'https://www.google.com/search?q={query}',                logo: 'https://i.postimg.cc/nXzVHkCf/google.jpg',          emoji: '🔍', noTracking: false },
+        bing:      { name: 'Bing',       home: 'https://www.bing.com',         url: 'https://www.bing.com/search?q={query}',                  logo: 'https://i.postimg.cc/yDd6VPkN/bing.jpg',            emoji: '🅱️', noTracking: false },
+        brave:     { name: 'Brave',      home: 'https://search.brave.com',     url: 'https://search.brave.com/search?q={query}',              logo: 'https://i.postimg.cc/LJX4HTn2/brave-browser.jpg',   emoji: '🦁', noTracking: true  },
+        ecosia:    { name: 'Ecosia',     home: 'https://www.ecosia.org',       url: 'https://www.ecosia.org/search?q={query}',                logo: 'https://i.postimg.cc/nXzVHkCx/ecosia.jpg',          emoji: '🌳', noTracking: false },
+        startpage: { name: 'Startpage',  home: 'https://www.startpage.com',    url: 'https://www.startpage.com/sp/search?query={query}',      logo: 'https://i.postimg.cc/yknY45YK/startpage.jpg',       emoji: '🛡️', noTracking: false },
+        qwant:     { name: 'Qwant',      home: 'https://www.qwant.com',        url: 'https://www.qwant.com/?q={query}',                       logo: 'https://i.postimg.cc/PPKrscrj/qwant.jpg',           emoji: '❓', noTracking: false },
+        yandex:    { name: 'Yandex',     home: 'https://yandex.com',           url: 'https://yandex.com/search/?text={query}',                logo: 'https://i.postimg.cc/56pNdGN1/yandex-badge.jpg',    emoji: '🇾', noTracking: false },
+        yahoo:     { name: 'Yahoo',      home: 'https://search.yahoo.com',     url: 'https://search.yahoo.com/search?p={query}',              logo: 'https://i.postimg.cc/CzJLTtLS/yahoo-badge.jpg',     emoji: '🟣', noTracking: false },
+        mojeek:    { name: 'Mojeek',     home: 'https://www.mojeek.com',       url: 'https://www.mojeek.com/search?q={query}',                logo: 'https://i.postimg.cc/3kRrKBdM/mojeek.jpg',          emoji: '🐱', noTracking: false },
+        presearch: { name: 'Presearch',  home: 'https://presearch.com',        url: 'https://presearch.com/search?q={query}',                 logo: '',                                                  emoji: '🔎', noTracking: false }
+      };
+
+      let currentEngine = 'ddg';
+
+      // ---------- Dropdown ----------
+      function openDropdown() {
+        settingsDropdown.classList.add('open');
+        settingsBtn.classList.add('active');
+        settingsBtn.setAttribute('aria-expanded', 'true');
+      }
+      function closeDropdown() {
+        settingsDropdown.classList.remove('open');
+        settingsBtn.classList.remove('active');
+        settingsBtn.setAttribute('aria-expanded', 'false');
+      }
+      function toggleDropdown() {
+        settingsDropdown.classList.contains('open') ? closeDropdown() : openDropdown();
       }
 
-      function performSearch() {
-        const query = searchInput.value;
-        goToSearch(query);
-      }
-
-      // Event listeners
-      searchIcon.addEventListener('click', function(event) {
-        event.preventDefault();
-        performSearch();
+      settingsBtn.addEventListener('click', e => { e.stopPropagation(); toggleDropdown(); });
+      document.addEventListener('click', e => {
+        if (!settingsDropdown.contains(e.target) && !settingsBtn.contains(e.target)) closeDropdown();
       });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDropdown(); });
 
-      searchInput.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter') {
-          event.preventDefault();
-          performSearch();
-        }
-      });
-
-      quickLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-          event.preventDefault();
-          const query = this.getAttribute('data-query');
-          if (query) {
-            searchInput.value = query;
-            goToSearch(query);
-          }
+      // ---------- Engine selection ----------
+      engineOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const key = this.getAttribute('data-engine');
+          if (!engines[key]) return;
+          currentEngine = key;
+          saveEnginePreference(key);
+          updateActiveEngine();
+          updateEngineUI();
+          closeDropdown();
         });
       });
 
-      console.log('Welcome to Restudio Internet');
+      function updateActiveEngine() {
+        engineOptions.forEach(opt => {
+          opt.classList.toggle('active', opt.getAttribute('data-engine') === currentEngine);
+        });
+      }
+
+      function updateEngineUI() {
+        const engine = engines[currentEngine];
+        searchInput.placeholder = `Search ${engine.name} ...`;
+        searchInput.setAttribute('aria-label', `Search ${engine.name}`);
+
+        const trackingText = engine.noTracking ? ' · No tracking' : '';
+        footerNote.innerHTML = `🔎 Powered by <a href="${engine.home}" target="_blank" rel="noopener noreferrer">${engine.name}</a>${trackingText} · ${engine.emoji}`;
+
+        openEngineLink.href = engine.home;
+        openEngineLink.title = `Open ${engine.name} homepage`;
+      }
+
+      // ---------- Search ----------
+      function goToSearch(query) {
+        const trimmed = query.trim();
+        const engine = engines[currentEngine] || engines.ddg;
+
+        if (trimmed === '') { window.open(engine.home, '_blank', 'noopener,noreferrer'); return; }
+
+        const encodedQuery = encodeURIComponent(trimmed);
+        window.open(engine.url.replace('{query}', encodedQuery), '_blank', 'noopener,noreferrer');
+      }
+      function performSearch() { goToSearch(searchInput.value); }
+
+      // ---------- Storage ----------
+      function saveEnginePreference(value) {
+        try { localStorage.setItem('preferredEngine', value); } catch (e) {}
+      }
+      function loadEnginePreference() {
+        try {
+          const saved = localStorage.getItem('preferredEngine');
+          if (saved && engines[saved]) currentEngine = saved;
+        } catch (e) {}
+      }
+
+      // ---------- Event Listeners ----------
+      searchIcon.addEventListener('click', e => { e.preventDefault(); performSearch(); });
+      searchIcon.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); performSearch(); }
+      });
+
+      searchInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter') { e.preventDefault(); performSearch(); }
+      });
+
+      quickLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const query = this.getAttribute('data-query');
+          if (query) { searchInput.value = query; goToSearch(query); }
+        });
+      });
+
+      // ---------- Init ----------
+      loadEnginePreference();
+      updateActiveEngine();
+      updateEngineUI();
     })();
   </script>
 
